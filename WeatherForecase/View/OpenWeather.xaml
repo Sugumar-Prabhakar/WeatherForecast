@@ -1,0 +1,120 @@
+﻿<UserControl x:Class="WeatherForecast.View.OpenWeather"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WeatherForecast.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="2" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <GroupBox Margin="5" MaxWidth="500" ScrollViewer.CanContentScroll="True">
+                <GroupBox.Header>
+                    <TextBlock Text="Hourly Weather Details" FontFamily="Calibri" FontSize="15" FontWeight="Black"/>
+                </GroupBox.Header>
+                <ItemsControl ItemsSource="{Binding HourlyDate}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="3"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ShowWeatherDetailsCommand}" CommandParameter="{Binding}" Margin="15,0,0,0" Style="{StaticResource FlatButtonStyle}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </GroupBox>
+        </Grid>
+        <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="2"/>
+        <Grid Grid.Row="2" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <GroupBox Grid.Row="0">
+                    <GroupBox.Header>
+                        <TextBlock Text="Clouds" FontFamily="Calibri" FontSize="15" FontWeight="Black"/>
+                    </GroupBox.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="All : " FontFamily="Calibri" FontSize="12" FontWeight="Black"/>
+                        <TextBlock Text="{Binding Clouds_All}" FontFamily="Calibri" FontSize="12" Margin="10,0,0,0" FontWeight="Black"/>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Grid.Row="1">
+                    <GroupBox.Header>
+                        <TextBlock Text="Wind" FontFamily="Calibri" FontSize="15" FontWeight="Black"/>
+                    </GroupBox.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Degree : " FontFamily="Calibri" FontSize="12" FontWeight="Black" Margin="0,0,10,0"/>
+                        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Speed : " FontFamily="Calibri" FontSize="12" FontWeight="Black" Margin="0,0,10,0"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Winds_Degree}" FontFamily="Calibri" FontSize="12" FontWeight="Black"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Winds_Speed}" FontFamily="Calibri" FontSize="12" FontWeight="Black"/>
+                    </Grid>
+                    
+                </GroupBox>
+                <Button Grid.Row="2" Content="Back" Command="{Binding CloseCommand}" Margin="5" Style="{StaticResource FlatButtonStyle}"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <GroupBox>
+                    <GroupBox.Header>
+                        <TextBlock Text="Temperature" FontFamily="Calibri" FontSize="15" FontWeight="Black"/>
+                    </GroupBox.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Temperature : " FontFamily="Calibri" FontSize="12" FontWeight="Black" Margin="0,0,10,0"/>
+                        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Minimum Temperature : " FontFamily="Calibri" FontSize="12" FontWeight="Black" Margin="0,0,10,0"/>
+                        <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Maximum Temperature : " FontFamily="Calibri" FontSize="12" FontWeight="Black" Margin="0,0,10,0"/>
+                        <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Pressure : " FontFamily="Calibri" FontSize="12" FontWeight="Black" Margin="0,0,10,0"/>
+                        <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Sea Level : " FontFamily="Calibri" FontSize="12" FontWeight="Black" Margin="0,0,10,0"/>
+                        <Label Grid.Row="5 " Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Ground Level : " FontFamily="Calibri" FontSize="12" FontWeight="Black" Margin="0,0,10,0"/>
+                        <Label Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Humidity : " FontFamily="Calibri" FontSize="12" FontWeight="Black" Margin="0,0,10,0"/>
+                        <Label Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Temperature KF : " FontFamily="Calibri" FontSize="12" FontWeight="Black" Margin="0,0,10,0"/>
+
+                        <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Temp_Temperature}" FontFamily="Calibri" FontSize="12" FontWeight="Black"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Temp_MinTemperature}" FontFamily="Calibri" FontSize="12" FontWeight="Black"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Temp_MaxTemperature}" FontFamily="Calibri" FontSize="12" FontWeight="Black"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Temp_Pressure}" FontFamily="Calibri" FontSize="12" FontWeight="Black"/>
+                        <TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Temp_SeaLevel}" FontFamily="Calibri" FontSize="12" FontWeight="Black"/>
+                        <TextBlock Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Temp_GndLevel}" FontFamily="Calibri" FontSize="12" FontWeight="Black"/>
+                        <TextBlock Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Temp_Humidity}" FontFamily="Calibri" FontSize="12" FontWeight="Black"/>
+                        <TextBlock Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Temp_TempKF}" FontFamily="Calibri" FontSize="12" FontWeight="Black"/>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

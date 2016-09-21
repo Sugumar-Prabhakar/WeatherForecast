@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Cities>
+  <City>
+    <Name>Chennai</Name>
+    <Country>India</Country>
+    <Coord>
+      <lat>80.278473</lat>
+      <lon>13.08784</lon>
+    </Coord>
+  </City>
+  <City>
+    <Name>London</Name>
+    <Country>UK</Country>
+    <Coord>
+      <lat>-81.23304</lat>
+      <lon>42.983391</lon>
+    </Coord>
+  </City>
+  <City>
+    <Name>Mumbai</Name>
+    <Country>India</Country>
+    <Coord>
+      <lon>72.54</lon>
+      <lat>18.55</lat>
+    </Coord>
+  </City>
+</Cities>
